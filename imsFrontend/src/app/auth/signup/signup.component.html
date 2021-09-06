@@ -1,0 +1,72 @@
+<div class="login-root fade-in">
+    <div class="box-root flex-flex flex-direction--column auth-bg-image" style="min-height: 100vh;flex-grow: 1;">
+        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+            <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Stackfindover</a></h1>
+            </div>
+            <div class="formbg-outer">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                        <div class="alert alert-danger fade-in" role="alert" *ngIf="message">
+                            {{message}}<a routerLink="/auth/login" class="alert-link">, Sign in</a>.
+                          </div>
+                        <span class="padding-bottom--15">Sign in to your account</span>
+                        <form id="stripe-login" [formGroup]="form" (submit)="userSignUp()">
+                            <!-- <div class="field padding-bottom--24">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" class="form-control" id="username" formControlName="username"
+                                [ngClass]="{'is-invalid':!form.get('username').valid && form.get('username').touched, 'is-valid': form.get('username').valid && form.get('username').touched}">
+                            </div> -->
+                            <div class="field padding-bottom--24">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control"
+                                formControlName="email"
+                                [ngClass]="{'is-invalid':!form.get('email').valid && form.get('email').touched, 'is-valid': form.get('email').valid && form.get('email').touched}">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="first_name">First Name</label>
+                                <input type="text" name="first_name" class="form-control"
+                                formControlName="first_name"
+                                [ngClass]="{'is-invalid':!form.get('first_name').valid && form.get('first_name').touched, 'is-valid': form.get('first_name').valid && form.get('first_name').touched}">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" name="last_name" class="form-control" formControlName="last_name"
+                                [ngClass]="{'is-invalid':!form.get('last_name').valid && form.get('last_name').touched, 'is-valid': form.get('last_name').valid && form.get('last_name').touched}">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control" formControlName="password"
+                                [ngClass]="{'is-invalid':!form.get('password').valid && form.get('password').touched, 'is-valid': form.get('password').valid && form.get('password').touched}">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="confirm_password">Confirm Password</label>
+                                <input type="password" name="confirm_password" class="form-control" formControlName="confirmPassword"
+                                [ngClass]="{'is-invalid':!form.get('confirmPassword').valid && form.get('confirmPassword').touched, 'is-valid': form.get('confirmPassword').valid && form.get('confirmPassword').touched}">
+                            </div>
+                            <!-- <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                                <label for="checkbox">
+                                    <input type="checkbox" name="checkbox"> Stay signed in for a week
+                                </label>
+                            </div> -->
+                            <div class="field padding-bottom--24">
+                                <input type="submit" name="submit" value="Continue" style="background-color:#5469d4;">
+                            </div>
+                            <!-- <div class="field">
+                                <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-link padding-top--24">
+                    <span>Don't have an account? <a routerLink="/auth/login">Sign in</a></span>
+                    <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+                        <span><a href="#">© Movies</a></span>
+                        <!-- <span><a href="#">Contact</a></span> -->
+                        <span><a href="#">Privacy & terms</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

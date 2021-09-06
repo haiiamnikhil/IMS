@@ -1,0 +1,15 @@
+.vscode/
+admin_management/__pycache__/
+authentication/__pycache__/
+dashboard/__pycache__/
+entitlements/__pycache__/
+firm_management/__pycache__/
+inventory_management/__pycache__/
+invoice_management/__pycache__/
+order_management/__pycache__/
+payment/__pycache__/
+plugins/__pycache__/
+plugins/auth/__pycache__/
+plugins/firm/__pycache__/
+settings/__pycache__/
+user_management/__pycache__/

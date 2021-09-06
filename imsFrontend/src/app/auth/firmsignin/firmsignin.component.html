@@ -1,0 +1,49 @@
+<div class="login-root fade-in">
+    <div class="box-root flex-flex flex-direction--column auth-bg-image" style="min-height: 100vh;flex-grow: 1;">
+        <div class="box-root padding-top--24 flex-flex flex-direction--column justify-content-center" style="flex-grow: 1; z-index: 9;">
+            <div class="formbg-outer">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                        <span class="padding-bottom--15 text-center">Sign in to your Firm</span>
+                        <form id="stripe-login" [formGroup]="form" (submit)="firmSignIn()">
+                            <div class="field padding-bottom--24">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" formControlName="email"
+                                [ngClass]="{'is-valid':form.get('email').valid && form.get('email').touched, 'is-invalid': !form.get('email').valid && form.get('email').touched}">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <div class="grid--50-50">
+                                    <label for="password">Password</label>
+                                    <div class="reset-pass">
+                                        <a href="#">Forgot your password?</a>
+                                    </div>
+                                </div>
+                                <input type="password" name="password" class="form-control" formControlName="password"
+                                [ngClass]="{'is-valid':form.get('password').valid && form.get('password').touched, 'is-invalid': !form.get('password').valid && form.get('password').touched}">
+                            </div>
+                            <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                                <label for="checkbox">
+                                    <input type="checkbox" name="checkbox"> Stay signed in for a week
+                                </label>
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <input type="submit" name="submit" value="Continue" style="background-color:#5469d4;">
+                            </div>
+                            <div class="field">
+                                <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-link padding-top--24">
+                    <span class="text-bold" style="color:#ffffff">Don't have an account? <a routerLink="/auth/signup">Sign up</a></span>
+                    <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+                        <span><a href="#">© Stackfindover</a></span>
+                        <span><a href="#">Contact</a></span>
+                        <span><a href="#">Privacy & terms</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
