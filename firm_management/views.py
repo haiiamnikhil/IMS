@@ -16,6 +16,7 @@ class RegisterFirm(View):
         self.firm = FirmValidator()
 
     def get(self, request, *args, **kwargs):
+        print(request.user)
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):

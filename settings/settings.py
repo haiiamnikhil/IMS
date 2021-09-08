@@ -69,7 +69,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'settings.urls'
 
 AUTH_USER_MODEL = 'authentication.Users'
-AUTHENTICATION_BACKENDS = ['authentication.backend.EmailBackend','authentication.backend.FirmAuth']
+AUTHENTICATION_BACKENDS = ['authentication.backend.EmailBackend']
 
 TEMPLATES = [
     {

@@ -11,10 +11,13 @@ export class FirmService {
   constructor(private http: HttpClient) { }
 
   registerFirm(firmDetails:any): Observable<any>{
-    return this.http.post('/firm/register-firm/', firmDetails)
+    return this.http.post('/signup/firm/', firmDetails)
   }
 
   signInFirm(credentials:any): Observable<any>{
-    return this.http.post('/auth/signin/firm/', credentials)
+    return this.http.post('/auth/signin/', credentials)
+  }
+  getFirms(): Observable<any>{
+    return this.http.get('/signup/user/',{headers:this.header})
   }
 }

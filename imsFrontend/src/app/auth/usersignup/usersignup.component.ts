@@ -5,10 +5,10 @@ import { AuthService } from 'src/app/services/authservice/auth.service';
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  templateUrl: './usersignup.component.html',
+  styleUrls: ['./usersignup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class UserSignupComponent implements OnInit {
 
   form:FormGroup;
   isBusy:boolean = false;

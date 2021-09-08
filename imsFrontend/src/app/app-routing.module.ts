@@ -1,24 +1,20 @@
-import { FirmregisterComponent } from './auth/firmregister/firmregister.component';
+import { FirmSignupComponent } from './auth/firmsignup/firmsignup.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { FirmsigninComponent } from './auth/firmsignin/firmsignin.component';
+import { UserSignupComponent } from './auth/usersignup/usersignup.component';
 
 
 const routes: Routes = [
   {
-    path: 'auth/signin/user', component: SigninComponent
+    path: 'auth/signin', component: SigninComponent
   },
   {
-    path: 'auth/signup', component: SignupComponent
+    path: 'signup/user', component: UserSignupComponent
   },
   {
-    path: 'firm/register-firm', component: FirmregisterComponent
+    path: 'signup/firm', component: FirmSignupComponent
   },
-  {
-    path: 'auth/signin/firm', component: FirmsigninComponent
-  }
 ];
 
 @NgModule({

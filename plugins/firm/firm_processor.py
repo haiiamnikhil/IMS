@@ -1,5 +1,5 @@
 from rest_framework.parsers import JSONParser
-from firm_management.models import Firms
+from authentication.models import Users
 from django.contrib.auth.hashers import make_password
 from plugins.config import status_configure
 
@@ -16,13 +16,16 @@ class FirmValidator():
     def verify_firm(self, request):
         data = self.parser.parse(request)
         data['password'] = make_password(data['password'])
-        print(data)
-        firm = Firms.objects.filter(firmname=data['firmname'])
-        if firm.exists():
-            self.status['status'] = False
-            self.status['message'] = "Account alredy exists"
-            return self.status
-        else:
-            Firms.objects.create(**data)
+        
+        try:
+            Users.objects.get(email=data['email'])
+        except Users.DoesNotExist:
+            Users.objects.create(**data)
             self.status['status'] = True
             return self.status
+        
+        self.status['status'] = False
+        self.status['message'] = "Account alredy exists"
+        return self.status
+            
+            

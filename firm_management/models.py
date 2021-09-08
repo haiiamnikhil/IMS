@@ -4,12 +4,11 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.hashers import check_password
 import datetime
+from authentication.models import Users
 
 class Firms(models.Model):
     firmname = models.CharField(max_length=100,unique=True,null=True,blank=False)
     firm_id = models.CharField(max_length=25,unique=True,null=True,blank=False)
-    firm_email = models.EmailField(unique=True,null=True,blank=False)
-    password = models.CharField(max_length=100,blank=False,null=True)
     firm_website = models.TextField(blank=True,null=True,unique=True)
     address = models.TextField(blank=False,null=True)
     city = models.CharField(max_length=50,unique=False,null=True,blank=False)
@@ -59,3 +58,15 @@ class FirmStatus(models.Model):
 def generate_user_status(sender,instance=None,created=False,**kwargs):
     if created:
         FirmStatus.objects.create(firmname=instance,updated_on=datetime.date.today())
+
+
+class FirmsList(models.Model):
+    firmname = models.CharField(max_length=50, null=True, unique=True, blank=False)
+
+    def __str__(self):
+        return str(self.firmname)
+
+@receiver(post_save,sender=Users)
+def generate_firms(sender,instance=None,created=True,**kwargs):
+    if created:
+        FirmsList.objects.create(firmname=str(instance.firmname)) 

@@ -1,6 +1,7 @@
 def status_configure():
     status = {
         'status': False,
-        'message':''
+        'message':'',
+        'user':''
     }
     return status

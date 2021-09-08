@@ -13,3 +13,4 @@ plugins/auth/__pycache__/
 plugins/firm/__pycache__/
 settings/__pycache__/
 user_management/__pycache__/
+user_management/migrations/__pycache__/

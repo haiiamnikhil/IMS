@@ -1,6 +1,5 @@
 from django.db import models
 from authentication.models import Users
-from firm_management.models import Firms
 from simple_history.models import HistoricalRecords
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -10,7 +9,7 @@ class UserInvites(models.Model):
     email = models.EmailField(max_length=100,unique=True,null=True,blank=False)
     first_name = models.CharField(max_length=50, null=True, blank=False)
     last_name = models.CharField(max_length=50, unique=False,null=True,blank=False)
-    firm_name = models.ForeignKey(Firms, on_delete=models.CASCADE,null=True,related_name='%(class)s_firm_name')
+    firm_name = models.ForeignKey(Users, on_delete=models.CASCADE,null=True,related_name='%(class)s_firm_name')
     invite_url = models.URLField(max_length=400,unique=True,blank=False)
     referred_by = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, related_name='%(class)s_refered_by')
     approved_by = models.ForeignKey(Users, on_delete=models.DO_NOTHING,null=True, related_name='%(class)s_approved_by')
@@ -45,7 +44,7 @@ class UserStatus(models.Model):
         return str(self.user)
 
 
-@receiver(post_save,sender=UserStatus)
+@receiver(post_save,sender=Users)
 def generate_user_status(sender,instance=None,created=False,**kwargs):
     if created:
-        UserStatus.objects.create(firmname=instance,updated_on=datetime.date.today())
+        UserStatus.objects.create(user=instance,updated_on=datetime.date.today())
