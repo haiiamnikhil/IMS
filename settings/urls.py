@@ -9,6 +9,8 @@ urlpatterns = [
     path('auth/',include('authentication.urls')),
     path('',include('firm_management.url_redirector')),
     path('',include('user_management.url_redirector')),
+
+    path('',include('app.url_redirector'))
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

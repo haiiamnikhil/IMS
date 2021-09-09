@@ -13,6 +13,8 @@ import { FirmService } from './services/firm/firm.service';
 import { ListuserComponent } from './firm_management/listuser/listuser.component';
 import { FirmProfileComponent } from './profile/firm-profile/firm-profile.component';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { GetstartedComponent } from './getstarted/getstarted.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { UserProfileComponent } from './profile/user-profile/user-profile.compon
     FirmSignupComponent,
     ListuserComponent,
     FirmProfileComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    GetstartedComponent,
   ],
   imports: [
     BrowserModule,

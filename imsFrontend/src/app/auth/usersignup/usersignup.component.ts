@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/authservice/auth.service';
+import { FirmService } from 'src/app/services/firm/firm.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,11 +15,24 @@ export class UserSignupComponent implements OnInit {
   isBusy:boolean = false;
   message:string;
   messageSuccess:boolean = true;
+  firmnames = []
+  default = "Select"
 
-  constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private auth: UserService, private firm: FirmService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(){
-    this.form = this.formBuilder.group({
+    this.firm.getFirms().subscribe(response => {
+      if (response.success){
+        console.log(response.data)
+        for (let i = 0; i < response.data.length; i++){
+          this.firmnames.push(response.data[i].firmname);
+        }
+      } else{
+        console.log("Some Error Occured")
+      }
+    }, err => console.log(err))
+    
+    this.form = this.formBuilder.group({firmname:[this.default,Validators.required],
       email: [null, [Validators.required, Validators.email]],
       first_name: [null, Validators.required], last_name: [null, Validators.required],
       password: [null, Validators.required],
@@ -32,7 +46,9 @@ export class UserSignupComponent implements OnInit {
   userSignUp(){
     this.isBusy = true;
     let credentials = {
-      username:this.form.get('email').value,
+      user_type : 'firm_client',
+      user_firmname: this.form.get('firmname').value,
+      email:this.form.get('email').value,
       password:this.form.get('password').value,
       first_name: this.form.get('first_name').value,
       last_name: this.form.get('last_name').value

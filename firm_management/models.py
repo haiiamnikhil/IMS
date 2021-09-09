@@ -61,12 +61,16 @@ def generate_user_status(sender,instance=None,created=False,**kwargs):
 
 
 class FirmsList(models.Model):
-    firmname = models.CharField(max_length=50, null=True, unique=True, blank=False)
+    firmname = models.ForeignKey(Users,on_delete=models.CASCADE, null=True,blank=False)
 
     def __str__(self):
         return str(self.firmname)
 
 @receiver(post_save,sender=Users)
 def generate_firms(sender,instance=None,created=True,**kwargs):
+    objection_list = ['firm_client','admin','vendor']
     if created:
-        FirmsList.objects.create(firmname=str(instance.firmname)) 
+        if str(instance.user_type) in objection_list:
+            pass
+        else:
+            FirmsList.objects.create(firmname=instance)

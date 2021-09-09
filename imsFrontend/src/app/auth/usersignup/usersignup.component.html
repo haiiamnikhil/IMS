@@ -10,7 +10,15 @@
                           </div>
                         <span class="padding-bottom--15">Sign in to your account</span>
                         <form id="stripe-login" [formGroup]="form" (submit)="userSignUp()">
-                            
+                            <div class="field padding-bottom--24">
+                                <label for="email">Firm Name</label>
+                                <select name="firm" id="firm" class="form-control form-select" formControlName="firmname">
+                                    <option value="Select" selected disabled>Select Firm Name</option>
+                                    <option *ngFor="let firms of firmnames" value="{{firms}}">{{firms}}</option>
+                                </select>
+                                
+                                <!-- [ngClass]="{'is-invalid':!form.get('email').valid && form.get('email').touched, 'is-valid': form.get('email').valid && form.get('email').touched}" -->
+                            </div>
                             <div class="field padding-bottom--24">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" class="form-control"
@@ -43,8 +51,9 @@
                                     <input type="checkbox" name="checkbox"> Stay signed in for a week
                                 </label>
                             </div> -->
+                            <!-- [disabled]="!form.valid || isBusy" -->
                             <div class="field padding-bottom--24">
-                                <input type="submit" name="submit" value="Continue" style="background-color:#5469d4;">
+                                <button type="submit" class="btn w-100" name="submit" style="background-color:#5469d4;" >Continue</button>
                             </div>
                             <!-- <div class="field">
                                 <a class="ssolink" href="#">Use single sign-on (Google) instead</a>

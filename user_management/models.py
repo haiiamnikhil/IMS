@@ -34,7 +34,7 @@ class UserStatus(models.Model):
     )
     user = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, related_name='%(class)s_user')
     status = models.CharField(max_length=50,choices=ACCOUNT_STATUS_CHOICES,default=2,null=True,blank=False)
-    updated_on = models.DateField(auto_now_add=False,default=datetime.date.today())
+    updated_on = models.DateField(auto_now_add=True)
     history = HistoricalRecords()
 
     class Meta:
@@ -47,4 +47,22 @@ class UserStatus(models.Model):
 @receiver(post_save,sender=Users)
 def generate_user_status(sender,instance=None,created=False,**kwargs):
     if created:
-        UserStatus.objects.create(user=instance,updated_on=datetime.date.today())
+        UserStatus.objects.create(user=instance)
+
+
+class UserOnboardingTracker(models.Model):
+    ONBOARDING_LEVELS = (
+        ('0','Get Started'),
+        ('1','Done')
+    )
+    user = models.ForeignKey(Users,on_delete=models.CASCADE,null=True)
+    status = models.CharField(max_length=50,unique=False,null=True,choices=ONBOARDING_LEVELS,default='0')
+    updated_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.user)
+    
+@receiver(post_save,sender=Users)
+def generate_user_onboard_status(sender,instance=None,created=False,**kwargs):
+    if created:
+        UserOnboardingTracker.objects.create(user=instance)

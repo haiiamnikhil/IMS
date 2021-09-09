@@ -3,3 +3,4 @@ from .models import *
 
 admin.site.register(UserInvites)
 admin.site.register(UserStatus)
+admin.site.register(UserOnboardingTracker)

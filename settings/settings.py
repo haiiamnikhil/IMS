@@ -63,10 +63,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'simple_history.middleware.HistoryRequestMiddleware'
+    'simple_history.middleware.HistoryRequestMiddleware',
+    'middleware.getstartedmiddleware.GetStartedMiddleware'
 ]
 
 ROOT_URLCONF = 'settings.urls'
+
+LOGIN_URL = '/auth/signin/'
 
 AUTH_USER_MODEL = 'authentication.Users'
 AUTHENTICATION_BACKENDS = ['authentication.backend.EmailBackend']

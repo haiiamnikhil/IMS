@@ -14,6 +14,7 @@ export class SigninComponent implements OnInit {
   form: FormGroup;
   isBusy:boolean = false;
   message:string
+  // messageSuccess:boolean;
 
   constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
@@ -22,6 +23,10 @@ export class SigninComponent implements OnInit {
       email : [null,[Validators.required, Validators.email]],
       password : [null,Validators.required]
     })
+    setTimeout(()=>{
+      this.message = null
+      // this.messageSuccess = false;
+  }, 3000);
   }
 
   userSignIn(){
@@ -31,9 +36,9 @@ export class SigninComponent implements OnInit {
     credentials.append('password', this.form.get('password').value);
     this.auth.userSignIn(credentials).subscribe(response => {
       if (response.success){
-        console.log('Logged In')
+        return
       } else {
-        console.log('Credentials Missmatch')
+        this.message = response.message;
       }
     }, err => console.log(err))
   }

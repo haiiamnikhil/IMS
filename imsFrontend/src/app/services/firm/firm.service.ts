@@ -17,7 +17,8 @@ export class FirmService {
   signInFirm(credentials:any): Observable<any>{
     return this.http.post('/auth/signin/', credentials)
   }
+  
   getFirms(): Observable<any>{
-    return this.http.get('/signup/user/',{headers:this.header})
+    return this.http.get('/listfirms/',{headers:this.header})
   }
 }
