@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+        <div class="row justify-content-center">
+            <!-- <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
                 <div class="card card-profile shadow">
                     <div class="row justify-content-center">
                         <div class="col-lg-3 order-lg-2">
@@ -41,7 +41,7 @@
                         <div class="text-center">
                             <h3>
                                 {{userDetails.firmname}}
-                                <!-- <span class="font-weight-light">, 27</span> -->
+                                <span class="font-weight-light">{{userDetails.user_type}}</span>
                             </h3>
                             <div class="h5 font-weight-300">
                                 <i class="ni location_pin mr-2"></i>Bucharest, Romania
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-xl-8 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
@@ -68,7 +68,7 @@
                                 <h3 class="mb-0">My account</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Save</a>
+                                <a (click)="saveBasicDetails()" class="btn btn-primary">Save</a>
                             </div>
                         </div>
                     </div>
@@ -102,10 +102,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-last-name">Last name</label>
-                                            <input type="text" id="input-last-name"
-                                                class="form-control form-control-alternative" placeholder="Last name"
-                                                value="Jesse" disabled>
+                                            <label class="form-control-label" for="input-website">Website</label>
+                                            <input type="text" id="input-website"
+                                                class="form-control form-control-alternative" placeholder="Website" formControlName="website">
                                         </div>
                                     </div>
                                 </div>
@@ -119,8 +118,8 @@
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-address">Address</label>
                                             <input id="input-address" class="form-control form-control-alternative"
-                                                placeholder="Home Address"
-                                                value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                                placeholder="{{userDetails.user_type ? 'Firm':'Home' }} Address"
+                                                type="text" formControlName="address">
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +129,7 @@
                                             <label class="form-control-label" for="input-city">City</label>
                                             <input type="text" id="input-city"
                                                 class="form-control form-control-alternative" placeholder="City"
-                                                value="New York">
+                                                value="New York" formControlName="city">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -138,14 +137,35 @@
                                             <label class="form-control-label" for="input-country">Country</label>
                                             <input type="text" id="input-country"
                                                 class="form-control form-control-alternative" placeholder="Country"
-                                                value="United States">
+                                                formControlName="country">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-country">Postal code</label>
-                                            <input type="number" id="input-postal-code"
-                                                class="form-control form-control-alternative" placeholder="Postal code">
+                                            <label class="form-control-label" for="postalcode">Postal code</label>
+                                            <input type="number" id="postalcode"
+                                                class="form-control form-control-alternative" placeholder="Postal code" formControlName="zipcode">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="Phone">Office Phone</label>
+                                            <input type="number" id="Phone"
+                                                class="form-control form-control-alternative" placeholder="Phone" formControlName="officephone">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="mobile">Mobile</label>
+                                            <input type="number" id="mobile"
+                                                class="form-control form-control-alternative" placeholder="Mobile" formControlName="mobile">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="est_year">Established</label>
+                                            <input type="number" id="est_year"
+                                                class="form-control form-control-alternative" placeholder="Est.year" formControlName="est_year">
                                         </div>
                                     </div>
                                 </div>

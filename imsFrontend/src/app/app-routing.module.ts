@@ -4,9 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { SigninComponent } from './auth/signin/signin.component';
 import { UserSignupComponent } from './auth/usersignup/usersignup.component';
 import { GetstartedComponent } from './getstarted/getstarted.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 
 const routes: Routes = [
+  {
+    path: 'home', component: DashboardComponent,
+  },
   {
     path: 'auth/signin', component: SigninComponent
   },

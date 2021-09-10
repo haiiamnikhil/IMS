@@ -14,6 +14,8 @@ import { ListuserComponent } from './firm_management/listuser/listuser.component
 import { FirmProfileComponent } from './profile/firm-profile/firm-profile.component';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 import { GetstartedComponent } from './getstarted/getstarted.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { GetstartedComponent } from './getstarted/getstarted.component';
     FirmProfileComponent,
     UserProfileComponent,
     GetstartedComponent,
+    DashboardComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
