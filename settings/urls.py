@@ -8,7 +8,7 @@ urlpatterns = [
 
     path('auth/',include('authentication.urls')),
     path('',include('firm_management.url_redirector')),
-    path('',include('user_management.url_redirector')),
+    path('',include('user_management.urls')),
 
     path('',include('app.url_redirector')),
     path('home/',include('home.url_redirector')),

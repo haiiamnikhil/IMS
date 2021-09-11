@@ -27,8 +27,8 @@ class GetStartedMiddleware:
                         if not request.path == reverse(self.redirects[user_status]) and request.path != self.user_details:
                             return HttpResponseRedirect(reverse(self.redirects[user_status]))
                         pass
-                    else:
-                        pass
+                    elif not request.path == reverse('dashboard') and request.path == reverse('get_started'):
+                        return HttpResponseRedirect(reverse('dashboard'))
             else:pass
         elif request.method == 'POST':
             pass

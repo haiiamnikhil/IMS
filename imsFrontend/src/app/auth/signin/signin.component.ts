@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
     credentials.append('password', this.form.get('password').value);
     this.auth.userSignIn(credentials).subscribe(response => {
       if (response.success){
-        return
+        this.router.navigate(['/home'])
       } else {
         this.message = response.message;
       }

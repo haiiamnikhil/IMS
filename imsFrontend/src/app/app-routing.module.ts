@@ -5,6 +5,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { UserSignupComponent } from './auth/usersignup/usersignup.component';
 import { GetstartedComponent } from './getstarted/getstarted.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { ListuserComponent } from './user/listuser/listuser.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'getstarted', component: GetstartedComponent
+  },
+  {
+    path: 'list-user', component: ListuserComponent
   }
 ];
 

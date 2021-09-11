@@ -12,4 +12,8 @@ export class UserService {
   userSignUp(credentials:any): Observable<any>{
     return this.http.post('/signup/user/', credentials)
   }
+
+  listUsers(): Observable<any>{
+    return this.http.get('/list-user/',{headers:this.header})
+  }
 }

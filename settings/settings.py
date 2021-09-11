@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'simple_history',
+    'rest_framework',
 
+    'home',
+    'app',
     'admin_management',
     'authentication',
 
@@ -64,7 +67,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
-    'middleware.getstartedmiddleware.GetStartedMiddleware'
+    'middleware.getstartedmiddleware.GetStartedMiddleware',
+    'middleware.baseredirectmiddleware.BaseRedirectMiddleware'
 ]
 
 ROOT_URLCONF = 'settings.urls'
