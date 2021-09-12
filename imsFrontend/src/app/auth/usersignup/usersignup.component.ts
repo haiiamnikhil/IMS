@@ -23,7 +23,6 @@ export class UserSignupComponent implements OnInit {
   ngOnInit(){
     this.firm.getFirms().subscribe(response => {
       if (response.success){
-        console.log(response.data)
         for (let i = 0; i < response.data.length; i++){
           this.firmnames.push(response.data[i].firmname);
         }
@@ -55,9 +54,9 @@ export class UserSignupComponent implements OnInit {
     }
     this.auth.userSignUp(credentials).subscribe(response => {
       if (response.success){
-        console.log(true)
+        this.router.navigate(['/auth/signin'])
       } else {
-        console.log(false)
+        this.message = response.message
       }
     }, err => console.log(err))
   }

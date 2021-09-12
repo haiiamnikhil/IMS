@@ -24,12 +24,13 @@ class GetStartedMiddleware:
                 user_status = user_onboard.status
                 for status in self.onboard_level:
                     if user_status in status:
-                        if not request.path == reverse(self.redirects[user_status]) and request.path != self.user_details:
+                        if not request.path == reverse(self.redirects[user_status]) and not request.path == self.user_details:
                             return HttpResponseRedirect(reverse(self.redirects[user_status]))
                         pass
                     elif not request.path == reverse('dashboard') and request.path == reverse('get_started'):
                         return HttpResponseRedirect(reverse('dashboard'))
-            else:pass
+            elif user.is_anonymous and request.path == reverse('get_started') or request.path == reverse('dashboard'):
+                return HttpResponseRedirect(reverse('signin_user'))
         elif request.method == 'POST':
             pass
         response = self.get_response(request)

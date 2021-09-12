@@ -8,19 +8,20 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="ang/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{% static 'assets/angular/styles.css' %}">
 <style>
 
 </style>
 </head>
 
-<body style="background-color:#ecf0f4">
+<body class="hold-transition sidebar-mini layout-fixed">
   {% block content %}{% endblock %}
 	<app-root><img src="{% static 'logo/logo.gif' %}"  alt="Loading..." style="position:fixed; top:50%; left:50%; transform: translate(-50%, -50%);"></app-root>
   <script type="text/javascript" src="{% static 'assets/angular/polyfills.js' %}"></script>
   <script type="text/javascript" src="{% static 'assets/angular/scripts.js' %}"></script>
   <script type="text/javascript" src="{% static 'assets/angular/runtime.js' %}"></script>
   <script type="text/javascript" src="{% static 'assets/angular/main.js' %}"></script>
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </body>
 </html>

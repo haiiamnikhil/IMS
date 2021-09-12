@@ -15,6 +15,10 @@ import { UserProfileComponent } from './profile/user-profile/user-profile.compon
 import { GetstartedComponent } from './getstarted/getstarted.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { UserService } from './services/user/user.service';
+import { CommonService } from './services/common/common.service';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -28,15 +32,17 @@ import { NavbarComponent } from './common/navbar/navbar.component';
     GetstartedComponent,
     DashboardComponent,
     NavbarComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService,FirmService],
+  providers: [AuthService,FirmService,UserService,CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

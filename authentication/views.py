@@ -21,10 +21,9 @@ class SignInUser(View):
 
     def post(self, request, *args, **kwargs):
         auth = self.auth.signin_auth(request)
-        print(auth)
         if auth['status']:
             login(request, auth['user'])
-            return JsonResponse({'success': True},safe=False,status=200)
+            return JsonResponse({'success': True,'onboard_status':auth['onboard_status']},safe=False,status=200)
         else:
             return JsonResponse({'success': False,'message':auth['message']},safe=False,status=200)
 
@@ -34,6 +33,4 @@ def signOut(request):
     print(request.method)
     if request.user.is_authenticated:
         logout(request)
-        return redirect('signin_user')
-    else:
         return redirect('signin_user')

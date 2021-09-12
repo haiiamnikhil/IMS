@@ -174,3 +174,7 @@ a.ssolink {
     font-weight: 600;
     margin: 0 10px;
 }
+
+#firm{
+  min-height: 44px;
+}

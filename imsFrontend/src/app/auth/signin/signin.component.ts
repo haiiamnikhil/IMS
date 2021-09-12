@@ -36,8 +36,13 @@ export class SigninComponent implements OnInit {
     credentials.append('password', this.form.get('password').value);
     this.auth.userSignIn(credentials).subscribe(response => {
       if (response.success){
-        this.router.navigate(['/home'])
+        if (response.onboard_status == '1'){
+          this.router.navigate(['/home'])
+        } else {
+          this.router.navigate(['/getstarted'])
+        }
       } else {
+        console.log(response)
         this.message = response.message;
       }
     }, err => console.log(err))

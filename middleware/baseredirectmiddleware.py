@@ -8,15 +8,16 @@ class BaseRedirectMiddleware:
         # One-time configuration and initialization.
 
     def __call__(self, request):
-        if request.method == 'GET':
-            path = request.path
-            user = request.user
-            if path == '/' and user.is_authenticated:
-                return redirect(reverse('dashboard'))
-            # elif not user.is_authenticated and not request.path == reverse('signin_user'):
-            elif not user.is_authenticated and not request.path == reverse('signin_user'):
-                return redirect(reverse('signin_user'))
-            else:pass
+        # if request.method == 'GET':
+        #     path = request.path
+        #     user = request.user
+        #     if not user.is_authenticated or request.path == reverse('signup_user') or request.path == reverse('signup_firm'):
+        #         return redirect(request.path)
+        #     elif path == '/' and user.is_authenticated:
+        #         return redirect(reverse('dashboard'))
+        #     elif not user.is_authenticated and not request.path == reverse('signin_user'):
+        #         return redirect(reverse('signin_user'))
+        #     else:pass
 
         response = self.get_response(request)
 

@@ -6,9 +6,9 @@
                 <div class="formbg">
                     <div class="formbg-inner padding-horizontal--48">
                         <div class="alert alert-danger fade-in" role="alert" *ngIf="message">
-                            {{message}}<a routerLink="/auth/login" class="alert-link">, Sign in</a>.
+                            {{message}}<a routerLink="/auth/signin" class="alert-link">, Sign in</a>.
                           </div>
-                        <span class="padding-bottom--15">Sign in to your account</span>
+                        <span class="padding-bottom--15 text-center">Sign in to your account</span>
                         <form id="stripe-login" [formGroup]="form" (submit)="userSignUp()">
                             <div class="field padding-bottom--24">
                                 <label for="email">Firm Name</label>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="footer-link padding-top--24">
-                    <span>Don't have an account? <a routerLink="/auth/login">Sign in</a></span>
+                    <span>Don't have an account? <a routerLink="/auth/signin">Sign in</a></span>
                     <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
                         <span><a href="#">© Movies</a></span>
                         <!-- <span><a href="#">Contact</a></span> -->

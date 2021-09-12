@@ -19,4 +19,7 @@ class SignUpUser(View):
 
     def post(self, request, *args, **kwargs):
         auth = self.auth.verify_user(request)
-        return JsonResponse({'success':True},status=200,safe=False)
+        if auth['status']:
+            return JsonResponse({'success':True},status=200,safe=False)
+        else:
+            return JsonResponse({'success':False,'message':auth['message']},status=200,safe=False)
