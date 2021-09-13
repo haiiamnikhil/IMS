@@ -45,7 +45,7 @@ export class UserSignupComponent implements OnInit {
   userSignUp(){
     this.isBusy = true;
     let credentials = {
-      user_type : 'firm_client',
+      user_type : 'firm_user',
       user_firmname: this.form.get('firmname').value,
       email:this.form.get('email').value,
       password:this.form.get('password').value,

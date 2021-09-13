@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,9 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { UserService } from './services/user/user.service';
 import { CommonService } from './services/common/common.service';
 import { CommonModule } from '@angular/common';
+import { CreateinvoiceComponent } from './invoice/createinvoice/createinvoice.component';
+import { ListinvoiceComponent } from './invoice/listinvoice/listinvoice.component';
+import { ListuserComponent } from './user/listuser/listuser.component';
 
 
 @NgModule({
@@ -33,6 +36,9 @@ import { CommonModule } from '@angular/common';
     DashboardComponent,
     NavbarComponent,
     SidebarComponent,
+    CreateinvoiceComponent,
+    ListinvoiceComponent,
+    ListuserComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService,FirmService,UserService,CommonService],
+  providers: [AuthService,FirmService,UserService,CommonService,Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

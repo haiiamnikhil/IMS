@@ -13,7 +13,7 @@ export class CommonService {
   onBoardDetails():Observable<any>{
     return this.http.get('/profile/details/',{headers:this.header})
   }
-  saveBasicDetails(data:any):Observable<any>{
+  saveDetails(data:any):Observable<any>{
     return this.http.post('/getstarted/',data)
   }
 }

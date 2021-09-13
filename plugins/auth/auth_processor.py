@@ -1,7 +1,8 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
 from rest_framework.parsers import JSONParser
-from user_management.models import UserStatus, UserOnboardingTracker
+from user_management.models import UserOnboardingTracker, UserDetails
+from firm_management.models import FirmDetails
 from plugins.config import status_configure
 from .auth_user_type import VerifyUser
 
@@ -19,7 +20,10 @@ class AuthProcessor():
         if user:
             user_type = VerifyUser().get_user_type(self.data['username'])
             onboard_status = UserOnboardingTracker.objects.get(user=user)
-            account_status = UserStatus.objects.get(user=user)
+            if user_type == 'firm':
+                account_status = FirmDetails.objects.get(user=user)
+            elif user_type == 'firm_user':
+                account_status = UserDetails.objects.get(user=user)
             print(account_status)
             if int(account_status.status) == 1:
                 self.status['status'] = True

@@ -2,13 +2,15 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from simple_history.models import HistoricalRecords
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Users(AbstractUser):
     USER_TYPES = (
         ('firm','Firm'),
         ('admin','Admin'),
-        ('firm_client','Firm Client'),
+        ('firm_user','Firm User'),
         ('vendor','Vendor')
     )
     nnid = models.BigIntegerField(null=True,blank=True,unique=True)

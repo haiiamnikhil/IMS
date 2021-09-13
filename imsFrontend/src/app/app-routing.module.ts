@@ -5,28 +5,18 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { UserSignupComponent } from './auth/usersignup/usersignup.component';
 import { GetstartedComponent } from './getstarted/getstarted.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { ListinvoiceComponent } from './invoice/listinvoice/listinvoice.component';
 import { ListuserComponent } from './user/listuser/listuser.component';
 
 
 const routes: Routes = [
-  {
-    path: 'home', component: DashboardComponent,
-  },
-  {
-    path: 'auth/signin', component: SigninComponent
-  },
-  {
-    path: 'signup/user', component: UserSignupComponent
-  },
-  {
-    path: 'signup/firm', component: FirmSignupComponent
-  },
-  {
-    path: 'getstarted', component: GetstartedComponent
-  },
-  {
-    path: 'list-user', component: ListuserComponent
-  }
+  {path: 'home', component: DashboardComponent,},
+  {path: 'auth/signin', component: SigninComponent},
+  {path: 'signup/user', component: UserSignupComponent},
+  {path: 'signup/firm', component: FirmSignupComponent},
+  {path: 'getstarted', component: GetstartedComponent},
+  {path: 'invoice/list-invoice', component: ListinvoiceComponent},
+  {path: 'user/list-user', component: ListuserComponent},
 ];
 
 @NgModule({

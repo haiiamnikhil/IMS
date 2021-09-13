@@ -14,6 +14,6 @@ export class UserService {
   }
 
   listUsers(): Observable<any>{
-    return this.http.get('/list-user/',{headers:this.header})
+    return this.http.get('/user/list-user/',{headers:this.header})
   }
 }

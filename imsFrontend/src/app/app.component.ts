@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+  page_name:String
   constructor(public router: Router){}
   
   ngOnInit(){
-    console.log(document.title)
+    this.page_name = document.title
   }
 }

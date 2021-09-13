@@ -1,19 +1,31 @@
-from django.http import JsonResponse
-from django.views import View
+from user_management.models import UserDesinations, UserDetails
+from firm_management.models import FirmDetails
 from authentication.models import Users
-from serializers.profile.profileserializer import BasicProfileSerializer
-from rest_framework.parsers import JSONParser
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
+from serializers.profile.profileserializer import BasicFirmProfileSerializer, BasicUserProfileSerializer, DesignationSerializer
+
+from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
+from rest_framework.generics import ListAPIView 
 
 
-@method_decorator(csrf_exempt,name="dispatch")
-class BasicProfileDetails(View):
-    def __init__(self):
-        self.parser = JSONParser()
+class BasicProfileDetails(ListAPIView):
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        user_details = Users.objects.get(email=user.email)
-        profile_serializer = BasicProfileSerializer(user_details)
-        return JsonResponse({'success':True,'data':profile_serializer.data},status=200,safe=False)
+        if user.user_type == 'firm':
+            firm_details = FirmDetails.objects.get(email=user.email)
+            profile_serializer = BasicFirmProfileSerializer(firm_details)
+        elif user.user_type == 'firm_user':
+            user_details = UserDetails.objects.get(email=user.email)
+            user_firm = FirmDetails.objects.get(firmname=user.user_firmname)
+            profile_serializer = BasicUserProfileSerializer(user_details)
+            user_desigantions = UserDesinations.objects.filter(firmname=user_firm)
+            designations = DesignationSerializer(user_desigantions,many=True)
+        elif user.user_type == 'vendor':
+            user_details = UserDetails.objects.get(email=user.email)
+            profile_serializer = BasicUserProfileSerializer(user_details)
+        return Response({'success':True,
+                        'data':profile_serializer.data,
+                        'user_type':user.user_type,
+                        'designation':designations.data},
+                        status=200)

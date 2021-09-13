@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('',include('app.url_redirector')),
     path('home/',include('home.url_redirector')),
+    path('',include('invoice_management.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
